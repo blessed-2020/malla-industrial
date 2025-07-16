@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Interactiva - Prueba</title>
+  <title>Malla Interactiva Ingeniería Civil Industrial</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,8 +12,18 @@
     h1 {
       color: #333;
     }
+    #reset {
+      background: #d32f2f;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
     .contenedor {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
@@ -50,27 +60,106 @@
   </style>
 </head>
 <body>
-  <h1>Prueba de Malla Interactiva</h1>
-  <p>Haz clic en un ramo para aprobarlo. Si tiene prerrequisito, se desbloquea automáticamente.</p>
+  <h1>Malla Interactiva Ingeniería Civil Industrial</h1>
+  <p>Haz clic en un ramo para aprobarlo. Los prerrequisitos se desbloquean automáticamente.</p>
+  <button id="reset">🔄 Resetear Progreso</button>
 
   <div class="contenedor">
+
     <!-- Semestre 1 -->
     <div class="semestre">
-      <h2>Semestre 1</h2>
-      <div class="ramo" id="calculo1">Cálculo I</div>
+      <h2>I Semestre</h2>
       <div class="ramo" id="fisica1">Introducción a la Física</div>
+      <div class="ramo" id="calculo1">Cálculo I</div>
+      <div class="ramo" id="algebra1">Álgebra I</div>
+      <div class="ramo" id="quimica">Química General</div>
+      <div class="ramo" id="intro_ing">Proyecto: Introducción a la Ingeniería</div>
+      <div class="ramo" id="identidad">Identidad, Equidad y Género</div>
     </div>
 
     <!-- Semestre 2 -->
     <div class="semestre">
-      <h2>Semestre 2</h2>
-      <div class="ramo bloqueado" id="calculo2" data-prereq="calculo1">Cálculo II</div>
+      <h2>II Semestre</h2>
       <div class="ramo bloqueado" id="mecanica" data-prereq="fisica1">Mecánica</div>
+      <div class="ramo bloqueado" id="calculo2" data-prereq="calculo1">Cálculo II</div>
+      <div class="ramo bloqueado" id="algebra2" data-prereq="algebra1">Álgebra II</div>
+      <div class="ramo bloqueado" id="programacion" data-prereq="intro_ing">Programación</div>
+      <div class="ramo" id="dialogo">Diálogo Fe-Cultura</div>
+      <div class="ramo" id="ingles1">Inglés I</div>
     </div>
+
+    <!-- Semestre 3 -->
+    <div class="semestre">
+      <h2>III Semestre</h2>
+      <div class="ramo bloqueado" id="ecuaciones" data-prereq="calculo2">Ecuaciones Diferenciales</div>
+      <div class="ramo bloqueado" id="calculo3" data-prereq="calculo2">Cálculo III</div>
+      <div class="ramo bloqueado" id="estadistica" data-prereq="algebra2">Estadística</div>
+      <div class="ramo bloqueado" id="proy_diseno" data-prereq="programacion">Proyecto Diseño e Innovación</div>
+      <div class="ramo bloqueado" id="formacion_electiva" data-prereq="dialogo">Formación General Electiva</div>
+      <div class="ramo bloqueado" id="ingles2" data-prereq="ingles1">Inglés II</div>
+    </div>
+
+    <!-- Semestre 4 -->
+    <div class="semestre">
+      <h2>IV Semestre</h2>
+      <div class="ramo bloqueado" id="electromagnetismo" data-prereq="mecanica">Electromagnetismo</div>
+      <div class="ramo bloqueado" id="admin_prod1" data-prereq="programacion">Adm. Producción I</div>
+      <div class="ramo bloqueado" id="estad_aplicada" data-prereq="estadistica">Estadística Aplicada</div>
+      <div class="ramo bloqueado" id="termodinamica" data-prereq="mecanica">Termodinámica</div>
+      <div class="ramo bloqueado" id="economia" data-prereq="estadistica">Economía</div>
+      <div class="ramo bloqueado" id="comunicacion" data-prereq="ingles2">Comunicación Efectiva</div>
+    </div>
+
+    <!-- Semestre 5 -->
+    <div class="semestre">
+      <h2>V Semestre</h2>
+      <div class="ramo bloqueado" id="electivo_ciencias" data-prereq="electromagnetismo">Electivo Ciencias</div>
+      <div class="ramo bloqueado" id="inv_op1" data-prereq="estad_aplicada">Investigación Operativa I</div>
+      <div class="ramo bloqueado" id="ciencia_datos" data-prereq="programacion">Ciencia de Datos</div>
+      <div class="ramo bloqueado" id="contabilidad" data-prereq="economia">Contabilidad Dirección</div>
+    </div>
+
+    <!-- Semestre 6 -->
+    <div class="semestre">
+      <h2>VI Semestre</h2>
+      <div class="ramo bloqueado" id="emprendimiento" data-prereq="proy_diseno">Emprendimiento</div>
+      <div class="ramo bloqueado" id="inv_op2" data-prereq="inv_op1">Investigación Operativa II</div>
+      <div class="ramo bloqueado" id="ing_economica" data-prereq="contabilidad">Ingeniería Económica</div>
+      <div class="ramo bloqueado" id="electivo_prof1" data-prereq="ciencia_datos">Electivo Profesional</div>
+    </div>
+
+    <!-- Semestre 7 -->
+    <div class="semestre">
+      <h2>VII Semestre</h2>
+      <div class="ramo bloqueado" id="ing_sostenible" data-prereq="inv_op2">Ingeniería y Desarrollo Sostenible</div>
+      <div class="ramo bloqueado" id="simulacion" data-prereq="inv_op2">Simulación</div>
+      <div class="ramo bloqueado" id="tec_info" data-prereq="ciencia_datos">Tecnologías Información</div>
+      <div class="ramo bloqueado" id="cadena_sum" data-prereq="admin_prod1">Cadena de Suministro</div>
+      <div class="ramo" id="etica">Ética Moral y Profesional</div>
+    </div>
+
+    <!-- Semestre 8 -->
+    <div class="semestre">
+      <h2>VIII Semestre</h2>
+      <div class="ramo bloqueado" id="planificacion" data-prereq="simulacion">Planificación Estratégica</div>
+      <div class="ramo bloqueado" id="gestion_humano" data-prereq="ing_sostenible">Gestión Capital Humano</div>
+      <div class="ramo bloqueado" id="org_digital" data-prereq="tec_info">Organización Digital</div>
+      <div class="ramo bloqueado" id="gestion_activos" data-prereq="cadena_sum">Gestión de Activos</div>
+    </div>
+
+    <!-- Semestre 9 -->
+    <div class="semestre">
+      <h2>IX Semestre</h2>
+      <div class="ramo bloqueado" id="electivo2" data-prereq="gestion_activos">Electivo Profesional</div>
+      <div class="ramo bloqueado" id="electivo3" data-prereq="electivo2">Electivo Profesional</div>
+      <div class="ramo bloqueado" id="electivo4" data-prereq="electivo3">Electivo Profesional</div>
+      <div class="ramo bloqueado" id="capstone" data-prereq="planificacion">Capstone Project</div>
+    </div>
+
   </div>
 
   <script>
-    // Función para cargar progreso guardado
+    // ✅ Cargar progreso guardado
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".ramo").forEach(ramo => {
         const estado = localStorage.getItem(ramo.id);
@@ -78,16 +167,42 @@
           ramo.classList.add("aprobado");
         }
       });
-      desbloquearRamos(); // revisa si algo se desbloquea
+      desbloquearRamos();
     });
 
-    // Evento de clic para marcar aprobados
+    // ✅ Evento de clic para aprobar ramos
     document.querySelectorAll(".ramo").forEach(ramo => {
       ramo.addEventListener("click", function () {
-        if (ramo.classList.contains("bloqueado")) return; // no se puede si está bloqueado
+        if (ramo.classList.contains("bloqueado")) return;
 
-        // Alternar aprobado
         ramo.classList.toggle("aprobado");
+        const estado = ramo.classList.contains("aprobado") ? "aprobado" : "";
+        localStorage.setItem(ramo.id, estado);
 
-        // Guardar progreso en el navegador
-        const estado = ramo
+        desbloquearRamos();
+      });
+    });
+
+    // ✅ Desbloquear automáticamente si se cumple prerrequisito
+    function desbloquearRamos() {
+      document.querySelectorAll(".ramo.bloqueado").forEach(ramo => {
+        const prereqId = ramo.dataset.prereq;
+        const prereq = document.getElementById(prereqId);
+        if (prereq && prereq.classList.contains("aprobado")) {
+          ramo.classList.remove("bloqueado");
+          ramo.style.background = "#b3e5fc";
+          ramo.style.cursor = "pointer";
+        }
+      });
+    }
+
+    // ✅ Botón para resetear progreso
+    document.getElementById("reset").addEventListener("click", () => {
+      if (confirm("¿Seguro que quieres resetear todo el progreso?")) {
+        localStorage.clear();
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>
